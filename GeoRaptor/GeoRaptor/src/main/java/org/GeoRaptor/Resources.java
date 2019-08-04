@@ -12,13 +12,13 @@ import oracle.dbtools.raptor.utils.MessagesBase;
  * @version 24 Jul 2019
  *
  */
-public class PreferenceResources extends MessagesBase {
+public class Resources extends MessagesBase {
 	
-	private static final ClassLoader CLASS_LOADER = PreferenceResources.class.getClassLoader();
-	private static final String CLASS_NAME = PreferenceResources.class.getCanonicalName();
-	private static final PreferenceResources INSTANCE = new PreferenceResources();	
+	private static final ClassLoader CLASS_LOADER = Resources.class.getClassLoader();
+	private static final String CLASS_NAME = Resources.class.getCanonicalName();
+	private static final Resources INSTANCE = new Resources();	
     
-    private PreferenceResources() {
+    private Resources() {
     	super(CLASS_NAME, CLASS_LOADER);
     }
 
