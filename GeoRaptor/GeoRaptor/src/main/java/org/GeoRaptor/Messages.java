@@ -4,7 +4,6 @@ import oracle.ide.log.LogManager;
 import oracle.ide.log.LogPage;
 
 import org.GeoRaptor.tools.Strings;
-//import org.GeoRaptor.tools.Tools;
 
 public class Messages {
     public Messages() {
@@ -46,7 +45,7 @@ public class Messages {
             }
         }
         catch (IllegalStateException _ise) {
-            // we start aplication as standalone, so we just log message in standard output
+            // we start application stand-alone, so we just log message in standard output
             System.out.println(finalMsg);
         }
     }

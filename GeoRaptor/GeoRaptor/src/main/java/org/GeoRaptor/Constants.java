@@ -1,16 +1,16 @@
 package org.GeoRaptor;
 
-
 import java.awt.Color;
 
 import java.util.UUID;
 
 import javax.swing.DefaultListModel;
+import javax.swing.ListModel;
 
-//import org.GeoRaptor.SpatialView.SpatialView;
-//import org.GeoRaptor.tools.Tools;
-//
-//import org.geotools.data.shapefile.shp.ShapeType;
+import org.GeoRaptor.SpatialView.SpatialView;
+import org.GeoRaptor.tools.Tools;
+
+import org.geotools.data.shapefile.shp.ShapeType;
 
 public class Constants {
 
@@ -44,54 +44,54 @@ public class Constants {
 		ORACLE, INVERSE, CLOCKWISE, ANTICLOCKWISE
 	}
 
-	public static javax.swing.DefaultComboBoxModel getShpPolygonOrientationCombo() {
-		return new javax.swing.DefaultComboBoxModel(
+	public static javax.swing.DefaultComboBoxModel<String> getShpPolygonOrientationCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { Constants.SHAPE_POLYGON_ORIENTATION.ORACLE.toString(),
 						Constants.SHAPE_POLYGON_ORIENTATION.INVERSE.toString(),
 						Constants.SHAPE_POLYGON_ORIENTATION.CLOCKWISE.toString(),
 						Constants.SHAPE_POLYGON_ORIENTATION.ANTICLOCKWISE.toString() });
 	};
 
-//	public static enum SHAPE_TYPE {
-//
-//		// Note that all constants have same ID as related ShapeTypes to aid in
-//		// conversion
-//		// Can't subclass ShapeType as is a final class
-//		//
-//		ARC(ShapeType.ARC.id), ARCM(ShapeType.ARCM.id), ARCZ(ShapeType.ARCZ.id), MULTIPOINT(ShapeType.MULTIPOINT.id),
-//		MULTIPOINTM(ShapeType.MULTIPOINTM.id), MULTIPOINTZ(ShapeType.MULTIPOINTZ.id), POINT(ShapeType.POINT.id),
-//		POINTM(ShapeType.POINTM.id), POINTZ(ShapeType.POINTZ.id), POLYGON(ShapeType.POLYGON.id),
-//		POLYGONM(ShapeType.POLYGONM.id), POLYGONZ(ShapeType.POLYGONZ.id), UNDEFINED(ShapeType.UNDEFINED.id);
-//
-//		public final int id;
-//
-//		SHAPE_TYPE(int id) {
-//			this.id = id;
-//		}
-//
-//		public static SHAPE_TYPE getShapeType(int _shapeTypeId) {
-//			for (SHAPE_TYPE sType : SHAPE_TYPE.values()) {
-//				if (sType.id == _shapeTypeId) {
-//					return sType;
-//				}
-//			}
-//			return null;
-//		}
-//
-//		public static javax.swing.DefaultComboBoxModel getArcShapeTypeCombo() {
-//			return new javax.swing.DefaultComboBoxModel(new String[] { ARC.toString(), ARCM.toString(), ARCZ.toString(),
-//					MULTIPOINT.toString(), MULTIPOINTM.toString(), MULTIPOINTZ.toString(), POINT.toString(),
-//					POINTM.toString(), POINTZ.toString(), POLYGON.toString(), POLYGONM.toString(), POLYGONZ.toString(),
-//					UNDEFINED.toString() });
-//		}
-//	};
+	public static enum SHAPE_TYPE {
+
+		// Note that all constants have same ID as related ShapeTypes to aid in
+		// conversion
+		// Can't subclass ShapeType as is a final class
+		//
+		ARC(ShapeType.ARC.id), ARCM(ShapeType.ARCM.id), ARCZ(ShapeType.ARCZ.id), MULTIPOINT(ShapeType.MULTIPOINT.id),
+		MULTIPOINTM(ShapeType.MULTIPOINTM.id), MULTIPOINTZ(ShapeType.MULTIPOINTZ.id), POINT(ShapeType.POINT.id),
+		POINTM(ShapeType.POINTM.id), POINTZ(ShapeType.POINTZ.id), POLYGON(ShapeType.POLYGON.id),
+		POLYGONM(ShapeType.POLYGONM.id), POLYGONZ(ShapeType.POLYGONZ.id), UNDEFINED(ShapeType.UNDEFINED.id);
+
+		public final int id;
+
+		SHAPE_TYPE(int id) {
+			this.id = id;
+		}
+
+		public static SHAPE_TYPE getShapeType(int _shapeTypeId) {
+			for (SHAPE_TYPE sType : SHAPE_TYPE.values()) {
+				if (sType.id == _shapeTypeId) {
+					return sType;
+				}
+			}
+			return null;
+		}
+
+		public static javax.swing.DefaultComboBoxModel<String> getArcShapeTypeCombo() {
+			return new javax.swing.DefaultComboBoxModel<String>(new String[] { ARC.toString(), ARCM.toString(), ARCZ.toString(),
+					MULTIPOINT.toString(), MULTIPOINTM.toString(), MULTIPOINTZ.toString(), POINT.toString(),
+					POINTM.toString(), POINTZ.toString(), POLYGON.toString(), POLYGONM.toString(), POLYGONZ.toString(),
+					UNDEFINED.toString() });
+		}
+	};
 
 	public static enum GEOMETRY_LABEL_POSITION {
 		FIRST_VERTEX, MIDDLE_VERTEX, END_VERTEX, JTS_CENTROID, SDO_POINT, LABEL_ALONG
 	};
 
-	public static javax.swing.DefaultComboBoxModel getGeometryLabelPositionCombo() {
-		return new javax.swing.DefaultComboBoxModel(
+	public static javax.swing.DefaultComboBoxModel<String> getGeometryLabelPositionCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { Constants.GEOMETRY_LABEL_POSITION.FIRST_VERTEX.toString(),
 						Constants.GEOMETRY_LABEL_POSITION.MIDDLE_VERTEX.toString(),
 						Constants.GEOMETRY_LABEL_POSITION.END_VERTEX.toString(),
@@ -105,8 +105,8 @@ public class Constants {
 		GEODETIC_GEOGRAPHIC3D, GEOGRAPHIC2D, PROJECTED, VERTICAL
 	};
 
-	public static javax.swing.DefaultComboBoxModel getSRIDTypeCombo() {
-		return new javax.swing.DefaultComboBoxModel(new String[] { Constants.SRID_TYPE.UNKNOWN.toString(),
+	public static javax.swing.DefaultComboBoxModel<String> getSRIDTypeCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(new String[] { Constants.SRID_TYPE.UNKNOWN.toString(),
 				Constants.SRID_TYPE.COMPOUND.toString(), Constants.SRID_TYPE.ENGINEERING.toString(),
 				Constants.SRID_TYPE.GEODETIC_COMPOUND.toString(), Constants.SRID_TYPE.GEODETIC_GEOCENTRIC.toString(),
 				Constants.SRID_TYPE.GEODETIC_GEOGRAPHIC2D.toString(),
@@ -118,8 +118,8 @@ public class Constants {
 		NONE, START, MIDDLE, END, END_ONLY
 	};
 
-	public static javax.swing.DefaultComboBoxModel getSegmentArrowsType() {
-		return new javax.swing.DefaultComboBoxModel(new String[] { "None" /* Constants.SEGMENT_ARROWS_TYPE.NONE */,
+	public static javax.swing.DefaultComboBoxModel<String> getSegmentArrowsType() {
+		return new javax.swing.DefaultComboBoxModel<String>(new String[] { "None" /* Constants.SEGMENT_ARROWS_TYPE.NONE */,
 				"Start" /* Constants.SEGMENT_ARROWS_TYPE.START */, "Middle" /* Constants.SEGMENT_ARROWS_TYPE.MIDDLE */,
 				"End" /* Constants.SEGMENT_ARROWS_TYPE.END */, "End Only" /* Constants.SEGMENT_ARROWS_TYPE.END_ONLY */
 		});
@@ -129,8 +129,8 @@ public class Constants {
 		NONE, ID, COORD, ID_COORD, ID_CR_COORD, CUMULATIVE_LENGTH, X, Y, ELEVATION, MEASURE
 	};
 
-	public static javax.swing.DefaultComboBoxModel getVertexLabelCombo() {
-		return new javax.swing.DefaultComboBoxModel(new String[] { "None" /* Constants.VERTEX_LABEL_TYPE.NONE */,
+	public static javax.swing.DefaultComboBoxModel<String> getVertexLabelCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(new String[] { "None" /* Constants.VERTEX_LABEL_TYPE.NONE */,
 				"<Id>" /* Constants.VERTEX_LABEL_TYPE.ID */, "(X,Y[,Z[,M]])" /* Constants.VERTEX_LABEL_TYPE.COORD */,
 				"<Id> (X,Y[,Z[,M]])" /* Constants.VERTEX_LABEL_TYPE.ID_COORD */,
 				"<html>&lt;Id&gt;<BR/>(X,Y[,Z[,M]])</html>" /* Constants.VERTEX_LABEL_TYPE.ID_CR_COORD */,
@@ -192,8 +192,8 @@ public class Constants {
 		NONE, SEGMENT_LENGTH, CUMULATIVE_LENGTH, BEARING, BEARING_AND_DISTANCE, SEGMENT_ID
 	};
 
-	public static javax.swing.DefaultComboBoxModel getSegmentLabelCombo() {
-		return new javax.swing.DefaultComboBoxModel(new String[] { Constants.SEGMENT_LABEL_TYPE.NONE.toString(),
+	public static javax.swing.DefaultComboBoxModel<String> getSegmentLabelCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(new String[] { Constants.SEGMENT_LABEL_TYPE.NONE.toString(),
 				Constants.SEGMENT_LABEL_TYPE.SEGMENT_LENGTH.toString(),
 				Constants.SEGMENT_LABEL_TYPE.CUMULATIVE_LENGTH.toString(),
 				Constants.SEGMENT_LABEL_TYPE.BEARING.toString(),
@@ -209,8 +209,8 @@ public class Constants {
 		GML, KML, SHP, TAB
 	};
 
-	public static javax.swing.DefaultComboBoxModel getExportTypeAsCombo() {
-		return new javax.swing.DefaultComboBoxModel(
+	public static javax.swing.DefaultComboBoxModel<String> getExportTypeAsCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { Constants.EXPORT_TYPE.GML.toString(), Constants.EXPORT_TYPE.KML.toString(),
 						Constants.EXPORT_TYPE.SHP.toString(), Constants.EXPORT_TYPE.TAB.toString() });
 	}
@@ -219,11 +219,11 @@ public class Constants {
 		OGR, FME, KML, SHP
 	};
 
-	public static javax.swing.DefaultComboBoxModel getXMLAttributeFlavourAsCombo(boolean _kml) {
+	public static javax.swing.DefaultComboBoxModel<String> getXMLAttributeFlavourAsCombo(boolean _kml) {
 		if (_kml)
-			return new javax.swing.DefaultComboBoxModel(new String[] { Constants.XMLAttributeFlavour.KML.toString() });
+			return new javax.swing.DefaultComboBoxModel<String>(new String[] { Constants.XMLAttributeFlavour.KML.toString() });
 		else
-			return new javax.swing.DefaultComboBoxModel(new String[] { Constants.XMLAttributeFlavour.OGR.toString(),
+			return new javax.swing.DefaultComboBoxModel<String>(new String[] { Constants.XMLAttributeFlavour.OGR.toString(),
 					Constants.XMLAttributeFlavour.FME.toString() });
 	}
 
@@ -231,8 +231,8 @@ public class Constants {
 		SDO_GEOMETRY, WKT, GML2, GML3, KML, KML2, ICON, THUMBNAIL
 	}
 
-	public static javax.swing.DefaultComboBoxModel getRenderTypeCombo() {
-		return new javax.swing.DefaultComboBoxModel(new String[] {
+	public static javax.swing.DefaultComboBoxModel<String> getRenderTypeCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(new String[] {
 				Constants.renderType.SDO_GEOMETRY.toString().toUpperCase(),
 				Constants.renderType.WKT.toString().toUpperCase(), Constants.renderType.GML2.toString().toUpperCase(),
 				Constants.renderType.GML3.toString().toUpperCase(), Constants.renderType.KML.toString().toUpperCase(),
@@ -244,8 +244,8 @@ public class Constants {
 		NONE, ELIPSIS, SQUARE, ROUND, ANGLED
 	};
 
-	public static javax.swing.DefaultComboBoxModel getBracketTypeCombo() {
-		return new javax.swing.DefaultComboBoxModel(new String[] { Constants.bracketType.NONE.toString().toUpperCase(),
+	public static javax.swing.DefaultComboBoxModel<String> getBracketTypeCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(new String[] { Constants.bracketType.NONE.toString().toUpperCase(),
 				Constants.bracketType.ELIPSIS.toString().toUpperCase(),
 				Constants.bracketType.SQUARE.toString().toUpperCase(),
 				Constants.bracketType.ROUND.toString().toUpperCase(),
@@ -273,8 +273,8 @@ public class Constants {
 		RELATE, TOUCH
 	};
 
-	public static javax.swing.DefaultComboBoxModel getSdoOperators() {
-		return new javax.swing.DefaultComboBoxModel(
+	public static javax.swing.DefaultComboBoxModel<String> getSdoOperators() {
+		return new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { "SDO_" + Constants.SDO_OPERATORS.ANYINTERACT.toString().toUpperCase(),
 						"SDO_" + Constants.SDO_OPERATORS.CONTAINS.toString().toUpperCase(),
 						"SDO_" + Constants.SDO_OPERATORS.COVEREDBY.toString().toUpperCase(),
@@ -289,8 +289,8 @@ public class Constants {
 						"SDO_" + Constants.SDO_OPERATORS.TOUCH.toString().toUpperCase() });
 	}
 
-	public static DefaultListModel getRelateMasks() {
-		DefaultListModel dlm = new DefaultListModel();
+	public static ListModel<String> getRelateMasks() {
+		DefaultListModel<String> dlm = new DefaultListModel<String>();
 		String[] masks = new String[] { Constants.SDO_OPERATORS.ANYINTERACT.toString().toUpperCase(),
 				Constants.SDO_OPERATORS.CONTAINS.toString().toUpperCase(),
 				Constants.SDO_OPERATORS.COVEREDBY.toString().toUpperCase(),
@@ -311,8 +311,8 @@ public class Constants {
 		UNKNOWN, POINT, MULTIPOINT, LINE, MULTILINE, POLYGON, MULTIPOLYGON, COLLECTION, SOLID, MULTISOLID, IMAGE
 	};
 
-	public static javax.swing.DefaultComboBoxModel getGeometryTypesCombo() {
-		return new javax.swing.DefaultComboBoxModel(
+	public static javax.swing.DefaultComboBoxModel<String> getGeometryTypesCombo() {
+		return new javax.swing.DefaultComboBoxModel<String>(
 				new String[] { Constants.GEOMETRY_TYPES.UNKNOWN.toString().toUpperCase(),
 						Constants.GEOMETRY_TYPES.COLLECTION.toString().toUpperCase(),
 						Constants.GEOMETRY_TYPES.POINT.toString().toUpperCase(),
@@ -548,16 +548,16 @@ public class Constants {
 	public static final int VAL_QUERY_LIMIT = 0;
 	public static final String VAL_GEOMETRY_COLUMN_NAME = "GEOM";
 	public static final boolean VAL_LAYER_RENDER_RANDOM = true;
-//	public static final String VAL_SPATIAL_LAYER_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><GeoRaptor><Version>"
-//			+ Tools.getVersion() + "</Version>" + "<SpatialPanel><ActiveView>SRID:NULL</ActiveView>" + "<Views>"
-//			+ "<View><ID>" + UUID.randomUUID().toString() + "</ID>" + "<Name>"
-//			+ SpatialView.createViewName(MainSettings.getInstance().getPreferences().getSRID()) + "</Name>"
-//			+ "<VisibleName>" + SpatialView.createViewName(MainSettings.getInstance().getPreferences().getSRID())
-//			+ "</VisibleName>" + "<SRID>" + MainSettings.getInstance().getPreferences().getSRID()
-//			+ "</SRID><SRIDType>PROJECTED</SRIDType>"
-//			+ "<DistanceUnitType>M</DistanceUnitType><AreaUnitType>SQ_M</AreaUnitType><Precision>3</Precision>"
-//			+ "<ActiveLayer></ActiveLayer><RenderingHint>SPEED</RenderingHint><MBR><MinX>0</MinX><MinY>0</MinY><MaxX>1</MaxX><MaxY>1</MaxY></MBR>"
-//			+ "<MapBackground>-1</MapBackground><ScaleBar>true</ScaleBar><SRIDBaseUnitType>M</SRIDBaseUnitType>"
-//			+ "<Layers></Layers>" + "</View></Views></SpatialPanel></GeoRaptor>";
+	public static final String VAL_SPATIAL_LAYER_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><GeoRaptor><Version>"
+			+ Tools.getVersion() + "</Version>" + "<SpatialPanel><ActiveView>SRID:NULL</ActiveView>" + "<Views>"
+			+ "<View><ID>" + UUID.randomUUID().toString() + "</ID>" + "<Name>"
+			+ SpatialView.createViewName(MainSettings.getInstance().getPreferences().getSRID()) + "</Name>"
+			+ "<VisibleName>" + SpatialView.createViewName(MainSettings.getInstance().getPreferences().getSRID())
+			+ "</VisibleName>" + "<SRID>" + MainSettings.getInstance().getPreferences().getSRID()
+			+ "</SRID><SRIDType>PROJECTED</SRIDType>"
+			+ "<DistanceUnitType>M</DistanceUnitType><AreaUnitType>SQ_M</AreaUnitType><Precision>3</Precision>"
+			+ "<ActiveLayer></ActiveLayer><RenderingHint>SPEED</RenderingHint><MBR><MinX>0</MinX><MinY>0</MinY><MaxX>1</MaxX><MaxY>1</MaxY></MBR>"
+			+ "<MapBackground>-1</MapBackground><ScaleBar>true</ScaleBar><SRIDBaseUnitType>M</SRIDBaseUnitType>"
+			+ "<Layers></Layers>" + "</View></Views></SpatialPanel></GeoRaptor>";
 
 }
