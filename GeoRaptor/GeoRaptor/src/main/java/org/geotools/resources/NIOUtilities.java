@@ -43,7 +43,7 @@ public final class NIOUtilities {
      */
     static Map<Integer, Queue<Object>> cache = new ConcurrentHashMap<Integer, Queue<Object>>();
     
-    static Map<Class, Method> cleanerMethodCache = new ConcurrentHashMap<Class, Method>();
+    static Map<Class<?>, Method> cleanerMethodCache = new ConcurrentHashMap<Class<?>, Method>();
     
     /**
      * The maximum size of the hard reference cache (the soft one can be unbounded, the GC will

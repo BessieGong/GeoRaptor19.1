@@ -28,7 +28,7 @@ public class ShapefileUtilities {
     /**
      * Marshal a given Object into the given Class.
      */
-    public static Object forAttribute(final Object o,Class colType) {
+    public static Object forAttribute(final Object o,Class<?> colType) {
         Object object;
         if(colType == Integer.class) {
             object = o;

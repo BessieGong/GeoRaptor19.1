@@ -53,7 +53,6 @@ public class JTSUtilities {
      * @return An array of size 2, index 0 is min, index 1 is max.
      * @deprecated use zMinMax(CoordinateSequence)
      */
-    @SuppressWarnings("oracle.jdeveloper.java.semantic-warning")
     @Deprecated
     public static final double[] zMinMax(final Coordinate[] cs) {
       double []result = {Double.NaN, Double.NaN};
@@ -136,8 +135,8 @@ public class JTSUtilities {
     return type;
   }
   
-  public static final Class findBestGeometryClass(ShapeType type) {
-    Class best;
+  public static final Class<?> findBestGeometryClass(ShapeType type) {
+    Class<?> best;
     if (type == null || type == ShapeType.NULL) {
       best = Geometry.class;
     } else if (type.isLineType()) {
@@ -361,8 +360,9 @@ public class JTSUtilities {
      * @return The best ShapeType.
      * @throws ShapefileException If theres a problem, like a bogus feature class.
      */
-    public static final ShapeType getShapeType(Class featureClass)
-            throws ShapefileException {
+    public static final ShapeType getShapeType(Class<?> featureClass)
+            throws ShapefileException 
+    {
                                                                                                                               
         ShapeType type = null;
                                                                                                                               

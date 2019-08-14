@@ -17,7 +17,6 @@
 package org.geotools.data.shapefile.shp;
 
 import java.io.EOFException;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -674,16 +673,6 @@ public class ShapefileReader {
 			result = fill(buffer, channel);
 		}
 		return result > 0;
-	}
-
-	public static void main(String[] args) throws Exception {
-		FileChannel channel = new FileInputStream(args[0]).getChannel();
-		ShapefileReader reader = new ShapefileReader(channel, new Lock());
-		System.out.println(reader.getHeader());
-		while (reader.hasNext()) {
-			System.out.println(reader.nextRecord().shape());
-		}
-		reader.close();
 	}
 
 	/**

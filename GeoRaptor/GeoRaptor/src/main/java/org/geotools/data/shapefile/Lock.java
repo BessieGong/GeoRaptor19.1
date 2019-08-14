@@ -18,7 +18,7 @@ package org.geotools.data.shapefile;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-//import java.util.logging.Logger;
+
 import org.geotools.util.logging.Logger;
 
 /**
@@ -44,11 +44,10 @@ public class Lock {
      * if not null a writer is waiting for the lock or is writing.
      */
     Thread writer;
-
     /**
      * Thread->Owner map. If empty no read locks exist.
      */
-    Map owners = new HashMap();
+	Map<Thread, Owner> owners = new HashMap<Thread, Owner>();
 
     /**
      * If the lock can be read locked the lock will be read and default
@@ -107,7 +106,7 @@ public class Lock {
 
         assertTrue("A write lock exists that is owned by another thread", canRead());
         Thread current = Thread.currentThread();
-        Owner owner = (Owner) owners.get(current);
+        Owner owner = owners.get(current);
         if (owner != null) {
             owner.timesLocked++;
         } else {
@@ -133,7 +132,7 @@ public class Lock {
         assertTrue("Current thread does not have a readLock", owners
                 .containsKey(Thread.currentThread()));
 
-        Owner owner = (Owner) owners.get(Thread.currentThread());
+        Owner owner = owners.get(Thread.currentThread());
         assertTrue("Current thread has " + owner.timesLocked
                 + "negative number of locks", owner.timesLocked > 0);
 
@@ -200,7 +199,7 @@ public class Lock {
      * 
      */
     synchronized int getReadLocks(Thread thread) {
-        Owner owner = (Owner) owners.get(thread);
+        Owner owner = owners.get(thread);
         if (owner == null)
             return -1;
         return owner.timesLocked;

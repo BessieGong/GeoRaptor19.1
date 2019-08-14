@@ -3,7 +3,6 @@ package org.geotools.util.logging;
 import org.GeoRaptor.Constants;
 import org.GeoRaptor.MainSettings;
 import org.GeoRaptor.Messages;
-import org.GeoRaptor.tools.*;
 
 
 public class Logger {

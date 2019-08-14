@@ -16,14 +16,11 @@
  */
 package org.geotools.data.shapefile.shp;
 
-import com.vividsolutions.jts.geom.Envelope;
-
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.nio.channels.FileChannel;
+
+import com.vividsolutions.jts.geom.Envelope;
 
 /**
  *
@@ -184,10 +181,5 @@ public class ShapefileHeader {
     return res;
   }
 
-  public static void main(String[] args) throws Exception {
-    FileChannel channel = new FileInputStream(new File(args[0])).getChannel();
-	System.out.println(ShapefileReader.readHeader(channel,true));
-	channel.close();
-  }
 }
 

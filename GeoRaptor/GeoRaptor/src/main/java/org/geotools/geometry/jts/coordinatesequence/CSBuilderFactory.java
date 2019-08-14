@@ -28,7 +28,7 @@ package org.geotools.geometry.jts.coordinatesequence;
  * @source $URL: https://svn.osgeo.org/geotools/tags/2.7-M4/modules/library/main/src/main/java/org/geotools/geometry/jts/coordinatesequence/CSBuilderFactory.java $
  */
 public class CSBuilderFactory {
-	private static Class defaultBuilderClass;
+	private static Class<DefaultCSBuilder> defaultBuilderClass;
 	
 	public static CSBuilder getDefaultBuilder() {
 		try {
@@ -39,7 +39,7 @@ public class CSBuilderFactory {
 		}
 	}
 	
-	private static Class getDefaultBuilderClass() {
+	private static Class<DefaultCSBuilder> getDefaultBuilderClass() {
 		if(defaultBuilderClass == null) {
 			defaultBuilderClass = DefaultCSBuilder.class;
 		}
@@ -49,7 +49,7 @@ public class CSBuilderFactory {
 	/**
 	 * @param builderClass
 	 */
-	public static void setDefaultBuilderClass(Class builderClass) {
+	public static void setDefaultBuilderClass(Class<DefaultCSBuilder> builderClass) {
 		if(!CSBuilder.class.isAssignableFrom(builderClass))
 			throw new RuntimeException(builderClass.getName() + " does not implement the CSBuilder interface");
 		defaultBuilderClass = builderClass;

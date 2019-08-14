@@ -72,7 +72,8 @@ public final class WeakCollectionCleaner extends Thread {
         while ((rq = getReferenceQueue ()) != null) {
             try {
                 // Block until a reference is enqueded.
-                final Reference ref = rq.remove();
+                @SuppressWarnings("rawtypes")
+				final Reference ref = rq.remove();
                 if (ref == null) {
                     /*
                      * Should never happen according Sun's Javadoc ("Removes the next reference
@@ -117,8 +118,5 @@ public final class WeakCollectionCleaner extends Thread {
         } catch (InterruptedException e) {
 
         }
-        // last resort tentative to kill the cleaner thread
-        if (this.isAlive())
-            this.stop();
     }
 }
