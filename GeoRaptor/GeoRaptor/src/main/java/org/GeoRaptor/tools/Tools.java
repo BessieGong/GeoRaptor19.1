@@ -50,7 +50,7 @@ import oracle.sql.NUMBER;
 import org.GeoRaptor.Constants;
 import org.GeoRaptor.MainSettings;
 import org.GeoRaptor.OracleSpatial.Metadata.MetadataTool;
-import org.GeoRaptor.Preferences;
+import org.GeoRaptor.PreferenceModel;
 import org.GeoRaptor.SpatialView.JDevInt.RenderTool;
 import org.GeoRaptor.SpatialView.SpatialView;
 import org.GeoRaptor.SpatialView.SupportClasses.ViewOperationListener;
@@ -67,7 +67,7 @@ public class Tools {
     /**
      * For access to preferences
      */
-    protected static Preferences geoRaptorPreferences;
+    protected static PreferenceModel geoRaptorPreferences;
 
     public Tools() {
         super();

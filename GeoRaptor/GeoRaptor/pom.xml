@@ -103,7 +103,20 @@
 			<scope>system</scope>
 			<systemPath>${sqldev.basedir}/jdev/lib/jdev-rt.jar</systemPath>
 		</dependency>
-		
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>sdoapi</artifactId>
+			<version>12.2.0</version>
+			<scope>system</scope>
+			<systemPath>${sqldev.basedir}/sqldeveloper/lib/sdoapi.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>oracle</groupId>
+			<artifactId>javax-ide</artifactId>
+			<version>12.2.0</version>
+			<scope>system</scope>
+			<systemPath>${sqldev.basedir}/ide/lib/javax-ide.jar</systemPath>
+		</dependency>	
 		<!-- https://mvnrepository.com/artifact/com.vividsolutions/jts -->
 		<dependency>
 		    <groupId>com.vividsolutions</groupId>
