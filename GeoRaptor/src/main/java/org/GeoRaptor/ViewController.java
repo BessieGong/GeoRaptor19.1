@@ -20,6 +20,12 @@ public class ViewController implements Controller {
 	
 	private static final Logger LOGGER = Logging.getLogger(ViewController.class.getName());
 	
+	/**
+	 * VIEW_SUBMENU_1_ACTION_ID Open Map
+	 * VIEW_SUBMENU_2_ACTION_ID Manage All Metadata
+	 * VIEW_SUBMENU_3_ACTION_ID Load Shapefile
+	 * VIEW_SUBMENU_4_ACTION_ID About GeoRaptor
+	 */
 	private static final int VIEW_SUBMENU_1_ACTION_ID = Ide.findOrCreateCmdID("VIEW_SUBMENU_1_ACTION_ID");
 	private static final int VIEW_SUBMENU_2_ACTION_ID = Ide.findOrCreateCmdID("VIEW_SUBMENU_2_ACTION_ID");
 	private static final int VIEW_SUBMENU_3_ACTION_ID = Ide.findOrCreateCmdID("VIEW_SUBMENU_3_ACTION_ID");
@@ -47,8 +53,7 @@ public class ViewController implements Controller {
 		}else if (cmdId == VIEW_SUBMENU_3_ACTION_ID) {
 			show("GeoRaptor3");
 		}else if (cmdId == VIEW_SUBMENU_4_ACTION_ID) {
-			AboutDialog.getInstance().show();
-			//JOptionPane.showMessageDialog(AboutDialog.getInstance(),"GeoRaptor");
+			AboutDialog.getInstance().setVisible(true);
 		}
 		return true;
 	}

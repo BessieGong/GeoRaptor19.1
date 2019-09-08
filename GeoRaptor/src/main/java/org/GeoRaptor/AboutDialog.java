@@ -59,8 +59,8 @@ public class AboutDialog extends javax.swing.JDialog {
         
         this.propertyManager = new PropertiesManager(AboutDialog.propertiesFile);
         
-        String version = Tools.getVersion();
-        setTitle(this.propertyManager.getMsg("ABOUT_BOX_TITLE",version));
+//        String version = Tools.getVersion();
+        setTitle(Resources.getString("ABOUT_BOX_TITLE"));
         
         initComponents();
         
@@ -71,7 +71,7 @@ public class AboutDialog extends javax.swing.JDialog {
         lblLogo.setIcon(this.GeoRaptorLogo);
 
         taGeoRaptorAboutText.setContentType("text/html");
-        taGeoRaptorAboutText.setText(this.propertyManager.getMsg("ABOUT_TEXT",version));
+        taGeoRaptorAboutText.setText(Resources.getString("ABOUT_TEXT"));
         taGeoRaptorAboutText.setBackground(this.getBackground());
         
         taGeoRaptorAboutText.addHyperlinkListener(new HyperlinkListener() {
