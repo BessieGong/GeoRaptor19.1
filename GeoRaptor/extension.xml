@@ -16,32 +16,76 @@
 	<!-- register rules, actions, controllers and context menu items -->
 	<trigger-hooks xmlns="http://xmlns.oracle.com/ide/extension">
 		<rules>
-			<rule id="example-dbnode-is-db-connection" type="context-has-element">
+			<rule id="table-show-menu" type="context-has-element">
 				<parameters>
-					<param name="element-class"
-						value="oracle.dbtools.raptor.navigator.db.DatabaseConnection" />
+					<param name="element-class" value="oracle.dbtools.raptor.navigator.impl.ObjectNode"/>
 				</parameters>
 			</rule>
+			<composite-rule id="table-show-menu-comp">
+				<and>
+					<!-- Don't really need this, just showing composite and how to specify
+					     multiple/single selection constraints -->
+					<or>
+						<rule-reference id="on-multiple-selection"/>
+						<rule-reference id="on-single-selection"/>
+					</or>
+					<rule-reference id="table-show-menu"/>
+				</and>
+			</composite-rule>
 		</rules>
 		<triggers xmlns:c="http://xmlns.oracle.com/ide/customization">
 			<actions xmlns="http://xmlns.oracle.com/jdeveloper/1013/extension">
-				<action id="CONTEXT_MENU_1_ACTION_ID">
+			
+				<!-- object context menu -->
+				<action id="CONTEXT_SUBMENU_1_ACTION_ID">
 					<properties>
-						<property name="Name">${MENU_ITEM}</property>
+						<property name="Name">Zoom to Map</property>
 					</properties>
 				</action>
-				<action id="CONTEXT_MENU_2_ACTION_ID">
+				<action id="CONTEXT_SUBMENU_2_ACTION_ID">
 					<properties>
-						<property name="Name">${MENU_ITEM}</property>
-						<property name="Category">Code-Editor</property>
+						<property name="Name">Add to Map</property>
 					</properties>
 				</action>
-				<action id="VIEW_MENU_ACTION_ID">
+				<action id="CONTEXT_SUBMENU_3_ACTION_ID">
 					<properties>
-						<property name="Name">${MENU_ITEM}</property>
-						<property name="SmallIcon">res:${SUBMENU_ONE_ICON}</property>
+						<property name="Name">Create Spatial Index</property>
 					</properties>
 				</action>
+				<action id="CONTEXT_SUBMENU_4_ACTION_ID">
+					<properties>
+						<property name="Name">Drop Spatial Index</property>
+					</properties>
+				</action>
+				<action id="CONTEXT_SUBMENU_5_ACTION_ID">
+					<properties>
+						<property name="Name">Manage Metadata</property>
+					</properties>
+				</action>
+				<action id="CONTEXT_SUBMENU_6_ACTION_ID">
+					<properties>
+						<property name="Name">Drop Metadata</property>
+					</properties>
+				</action>
+				<action id="CONTEXT_SUBMENU_7_ACTION_ID">
+					<properties>
+						<property name="Name">Export</property>
+					</properties>
+				</action>
+				<action id="CONTEXT_SUBMENU_8_ACTION_ID">
+					<properties>
+						<property name="Name">Validate geometry</property>
+					</properties>
+				</action>
+				
+				<!-- table context menu-->
+				<action id="CONTEXT_TABLESUBMENU_ACTION_ID">
+					<properties>
+						<property name="Name">Import Shapefile</property>
+					</properties>
+				</action>
+				
+				<!-- view menu  -->
 				<action id="VIEW_SUBMENU_1_ACTION_ID">
 					<properties>
 						<property name="Name">${VIEW_SUBMENU_1_LABEL}</property>
@@ -70,18 +114,24 @@
 			
 			<!-- controller -->
 			<controllers xmlns="http://xmlns.oracle.com/ide/extension">
-				<controller class="org.GeoRaptor.PreferenceController">
+				<controller class="org.GeoRaptor.TableContextMenuController">
 					<update-rules>
 						<update-rule rule="always-enabled">
-							<action id="CONTEXT_MENU_1_ACTION_ID" />
-							<action id="CONTEXT_MENU_2_ACTION_ID" />
+							<action id="CONTEXT_SUBMENU_1_ACTION_ID" />
+							<action id="CONTEXT_SUBMENU_2_ACTION_ID" />
+							<action id="CONTEXT_SUBMENU_3_ACTION_ID" />
+							<action id="CONTEXT_SUBMENU_4_ACTION_ID" />
+							<action id="CONTEXT_SUBMENU_5_ACTION_ID" />
+							<action id="CONTEXT_SUBMENU_6_ACTION_ID" />
+							<action id="CONTEXT_SUBMENU_7_ACTION_ID" />
+							<action id="CONTEXT_SUBMENU_8_ACTION_ID" />
+							<action id="CONTEXT_TABLESUBMENU_ACTION_ID" />
 						</update-rule>
 					</update-rules>
 				</controller>
 				<controller class="org.GeoRaptor.ViewController">
 					<update-rules>
 						<update-rule rule="always-enabled">
-							<action id="VIEW_MENU_ACTION_ID" />
 							<action id="VIEW_SUBMENU_1_ACTION_ID"/>
 							<action id="VIEW_SUBMENU_2_ACTION_ID"/>
 							<action id="VIEW_SUBMENU_3_ACTION_ID"/>
@@ -93,21 +143,38 @@
 			<!-- /controller -->
 			
 			<!-- context-menu -->
-			<context-menu-hook rule="example-dbnode-is-db-connection">
+			<context-menu-hook rule="table-show-menu">
 				<site idref="db_nav" />
 				<menu>
 					<section xmlns="http://jcp.org/jsr/198/extension-manifest"
 						id="CONTEXT_MENU_SECTION_ID" weight="0.1">
-						<item action-ref="CONTEXT_MENU_1_ACTION_ID" />
+							<menu id="CONTEXT_SUBMENU_ID" weight="2.0f">
+								<label>GeoRaptor</label>
+								<section id="CONTEXT_SUBMENU_SECTION_ID" weight="10.0f">
+									<item action-ref="CONTEXT_SUBMENU_1_ACTION_ID" />	
+									<item action-ref="CONTEXT_SUBMENU_2_ACTION_ID" />	
+									<item action-ref="CONTEXT_SUBMENU_3_ACTION_ID" />	
+									<item action-ref="CONTEXT_SUBMENU_4_ACTION_ID" />
+									<item action-ref="CONTEXT_SUBMENU_5_ACTION_ID" />
+									<item action-ref="CONTEXT_SUBMENU_6_ACTION_ID" />
+									<item action-ref="CONTEXT_SUBMENU_7_ACTION_ID" />
+									<item action-ref="CONTEXT_SUBMENU_8_ACTION_ID" />	
+								</section>
+							</menu>
 					</section>
 				</menu>
 			</context-menu-hook>
 			<context-menu-hook rule="always-enabled">
-				<site idref="editor" />
+				<site idref="db_nav" />
 				<menu>
 					<section xmlns="http://jcp.org/jsr/198/extension-manifest"
-						id="CONTEXT_MENU_SECTION_ID" weight="0.1">
-						<item action-ref="CONTEXT_MENU_2_ACTION_ID" />
+						id="CONTEXT_TABLLEMENU_SECTION_ID" weight="0.1">
+							<menu id="CONTEXT_TABLLESUBMENU_ID" weight="2.0f">
+								<label>GeoRaptor</label>
+								<section id="CONTEXT_TABLLESUBMENU_SECTION_ID" weight="10.0f">
+									<item action-ref="CONTEXT_TABLESUBMENU_ACTION_ID" />		
+								</section>
+							</menu>
 					</section>
 				</menu>
 			</context-menu-hook>
