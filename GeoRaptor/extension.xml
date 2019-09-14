@@ -21,6 +21,11 @@
 					<param name="element-class" value="oracle.dbtools.raptor.navigator.impl.ObjectNode"/>
 				</parameters>
 			</rule>
+			<rule id="table-menu" type="context-has-element">
+				<parameters>
+					<param name="element-class" value="oracle.dbtools.raptor.navigator.impl.ObjectFolder"/>
+				</parameters>
+			</rule>
 			<composite-rule id="table-show-menu-comp">
 				<and>
 					<!-- Don't really need this, just showing composite and how to specify
@@ -30,6 +35,17 @@
 						<rule-reference id="on-single-selection"/>
 					</or>
 					<rule-reference id="table-show-menu"/>
+				</and>
+			</composite-rule>
+			<composite-rule id="table-menu-comp">
+				<and>
+					<!-- Don't really need this, just showing composite and how to specify
+					     multiple/single selection constraints -->
+					<or>
+						<rule-reference id="on-multiple-selection"/>
+						<rule-reference id="on-single-selection"/>
+					</or>
+					<rule-reference id="table-menu"/>
 				</and>
 			</composite-rule>
 		</rules>
@@ -164,7 +180,7 @@
 					</section>
 				</menu>
 			</context-menu-hook>
-			<context-menu-hook rule="always-enabled">
+			<context-menu-hook rule="table-menu">
 				<site idref="db_nav" />
 				<menu>
 					<section xmlns="http://jcp.org/jsr/198/extension-manifest"
