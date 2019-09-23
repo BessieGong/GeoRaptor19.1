@@ -1,7 +1,13 @@
 package org.GeoRaptor;
 
+import java.sql.Connection;
+
 import javax.swing.JOptionPane;
 
+import org.GeoRaptor.OracleSpatial.Metadata.MetadataPanel;
+import org.GeoRaptor.io.Import.ShapefileLoad;
+import org.GeoRaptor.sql.DatabaseConnections;
+import org.GeoRaptor.tools.Strings;
 import org.geotools.util.logging.Logger;
 import org.geotools.util.logging.Logging;
 
@@ -41,17 +47,40 @@ public class ViewController implements Controller {
 		JOptionPane.showMessageDialog(null, message, Resources.getString("DIALOG_SHOW_TITLE"), JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	private boolean checkConnection() {
+		//Connection localConnection = DatabaseConnections.getInstance().getActiveConnection(); 
+		String connectionName = DatabaseConnections.getActiveConnectionName();
+		if (!Strings.isEmpty(connectionName)) {
+			return true;
+		}
+		return false;
+		
+	}
 	
 	@Override
 	public boolean handleEvent(IdeAction action, Context context) {
 		int cmdId = action.getCommandId();
 	
 		if (cmdId == VIEW_SUBMENU_1_ACTION_ID) {
-			show("GeoRaptor1");
+			if (checkConnection()) {			
+				show("GeoRaptor1");
+			}else {
+				show("No active connection");
+			}
 		}else if(cmdId == VIEW_SUBMENU_2_ACTION_ID){
-			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
+			if (checkConnection()) {
+				MenuAction menuAction = new MenuAction();
+				menuAction.setArgs("metadata");
+				menuAction.launch();
+			}else {
+				show("No active connection");
+			}
 		}else if (cmdId == VIEW_SUBMENU_3_ACTION_ID) {
-			show("GeoRaptor3");
+			if (checkConnection()) {			
+				ShapefileLoad.getInstance().initialise();
+			}else {
+				show("No active connection");
+			}
 		}else if (cmdId == VIEW_SUBMENU_4_ACTION_ID) {
 			AboutDialog.getInstance().setVisible(true);
 		}
