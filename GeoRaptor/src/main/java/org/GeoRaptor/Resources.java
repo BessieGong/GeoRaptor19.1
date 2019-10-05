@@ -46,4 +46,93 @@ public class Resources extends MessagesBase {
         return INSTANCE.getIntegerImpl(key);
     }
 
+    
+    /**
+     * Get localization message from resource bundle. You can also apply custom paramethers
+     * @param _key message key
+     * @return localization message
+     */
+    public static String getMsg(String _key, 
+                         Object _arg1, 
+                         Object _arg2,
+                         Object _arg3,
+                         Object _arg4) 
+    {
+        Object args[] = null;
+
+        // set object array
+        if ((_arg1 != null) && (_arg2 != null) && (_arg3 != null) && (_arg4 != null)) {
+            args = new Object[4];
+            args[0] = _arg1;
+            args[1] = _arg2;
+            args[2] = _arg3;
+            args[3] = _arg4;
+        } else if ((_arg1 != null) && (_arg2 != null) && (_arg3 != null)) {
+            args = new Object[3];
+            args[0] = _arg1;
+            args[1] = _arg2;
+            args[2] = _arg3;
+        } else if ((_arg1 != null) && (_arg2 != null)) {
+            args = new Object[2];
+            args[0] = _arg1;
+            args[1] = _arg2;
+        } else if (_arg1 != null) {
+            args = new Object[1];
+            args[0] = _arg1;
+        }
+        return getMsg(_key,args);
+    }
+
+    /**
+     * Override getMsg(String _key, Object _arg1, Object _arg2, Object _arg3)
+     */
+    public static String getMsg(String _key) {
+        return getMsg(_key, null, null, null, null);
+    }
+    
+    /**
+     * Override getMsg(String _key, Object _arg1, Object _arg2, Object _arg3)
+     */
+    public static String getMsg(String _key, 
+                         Object _arg1) {
+        return getMsg(_key, _arg1, null, null, null);
+    }
+
+    /**
+     * Override getMsg(String _key, Object _arg1, Object _arg2, Object _arg3)
+     */
+    public static String getMsg(String _key, 
+                         Object _arg1, 
+                         Object _arg2) {
+        return getMsg(_key, _arg1, _arg2, null, null);
+    }
+
+    public static String getMsg(String _key, 
+                         Object _arg1, 
+                         Object _arg2,
+                         Object _arg3) {
+        return getMsg(_key, _arg1, _arg2, _arg3, null);
+    }
+
+    /**
+     * Override getMsg(String _key, Object _arg1, Object _arg2, Object _arg3)
+     */
+    public static String getMsg(String   _key, 
+                         Object[] _args )
+    {
+        // get message for resource file
+        String message = null;
+        try {
+            message = getString(_key);
+        } catch (Exception _e) {
+            message = "ERROR_FOR_KEY: '" + _key + "' ; " + _e;
+        } // try - catch
+        // fill message if arguments are provided
+        if (_args != null) {
+            message = java.text.MessageFormat.format(message,_args);
+        }
+        return message;
+    } // getMsg
+
+    
 }

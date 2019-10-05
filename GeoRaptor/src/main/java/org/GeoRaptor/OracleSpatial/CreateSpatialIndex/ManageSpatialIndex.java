@@ -45,6 +45,8 @@ import org.geotools.util.logging.Logging;
  * @author laebe
  * @author Simon Greener, April 27th 2010 Moved getMsg handling out to separate
  *         PropertiesManager class
+ *         
+ *         Comment out 1467 lines
  **/
 
 public class ManageSpatialIndex extends javax.swing.JDialog 
@@ -1465,7 +1467,7 @@ public class ManageSpatialIndex extends javax.swing.JDialog
 			// Test what we have been given
 			// Should get back same as what we supply ... except if NULL
 			//
-			getColumnValue = MetadataTool.getGeometryColumn(_conn, _schemaName, _tableName, _columnName);
+//			getColumnValue = MetadataTool.getGeometryColumn(_conn, _schemaName, _tableName, _columnName);
 			if (Strings.isEmpty(getColumnValue)) {
 				// There is no geometry column in this table
 				//

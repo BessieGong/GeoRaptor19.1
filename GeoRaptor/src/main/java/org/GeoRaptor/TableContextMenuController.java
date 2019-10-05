@@ -2,6 +2,9 @@ package org.GeoRaptor;
 
 import javax.swing.JOptionPane;
 
+import org.GeoRaptor.OracleSpatial.CreateSpatialIndex.ManageSpatialIndex;
+import org.GeoRaptor.io.Import.ShapefileLoadEmpty;
+
 import oracle.ide.Context;
 import oracle.ide.Ide;
 import oracle.ide.controller.Controller;
@@ -38,9 +41,9 @@ public class TableContextMenuController implements Controller{
 		}else if(cmdId == ADD_TO_MAP){
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
 		}else if (cmdId == CREATE_SPATIAL_INDEX) {
-			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
+			ManageSpatialIndex.getInstance().setVisible(true);
 		}else if (cmdId == DROP_SPATIAL_INDEX) {
-			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
+			ManageSpatialIndex.getInstance().dropIndex(null, "", "", "", "", true);
 		}else if (cmdId == MANAGE_METADATA) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
 		}else if (cmdId == DROP_METADATA) {
@@ -50,7 +53,7 @@ public class TableContextMenuController implements Controller{
 		}else if (cmdId == VALIDATE_GEOMETRY) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
 		}else if (cmdId == IMPORT_SHAPEFILE) {
-			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
+			ShapefileLoadEmpty.getInstance().initialise();
 		}
 		return true;
 	}
