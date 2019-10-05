@@ -32,10 +32,10 @@ public class ViewController implements Controller {
 	 * VIEW_SUBMENU_3_ACTION_ID Load Shapefile
 	 * VIEW_SUBMENU_4_ACTION_ID About GeoRaptor
 	 */
-	private static final int VIEW_SUBMENU_1_ACTION_ID = Ide.findOrCreateCmdID("VIEW_SUBMENU_1_ACTION_ID");
-	private static final int VIEW_SUBMENU_2_ACTION_ID = Ide.findOrCreateCmdID("VIEW_SUBMENU_2_ACTION_ID");
-	private static final int VIEW_SUBMENU_3_ACTION_ID = Ide.findOrCreateCmdID("VIEW_SUBMENU_3_ACTION_ID");
-	private static final int VIEW_SUBMENU_4_ACTION_ID = Ide.findOrCreateCmdID("VIEW_SUBMENU_4_ACTION_ID");
+	private static final int OPEN_MAP = Ide.findOrCreateCmdID("OPEN_MAP");
+	private static final int MANAGE_ALL_METADATA = Ide.findOrCreateCmdID("MANAGE_ALL_METADATA");
+	private static final int LOAD_SHAPEFILE = Ide.findOrCreateCmdID("LOAD_SHAPEFILE");
+	private static final int ABOUT_GEORAPTOR = Ide.findOrCreateCmdID("ABOUT_GEORAPTOR");
 	
 	
 
@@ -61,13 +61,13 @@ public class ViewController implements Controller {
 	public boolean handleEvent(IdeAction action, Context context) {
 		int cmdId = action.getCommandId();
 	
-		if (cmdId == VIEW_SUBMENU_1_ACTION_ID) {
+		if (cmdId == OPEN_MAP) {
 			if (checkConnection()) {			
 				show("GeoRaptor1");
 			}else {
 				show("No active connection");
 			}
-		}else if(cmdId == VIEW_SUBMENU_2_ACTION_ID){
+		}else if(cmdId == MANAGE_ALL_METADATA){
 			if (checkConnection()) {
 				MenuAction menuAction = new MenuAction();
 				menuAction.setArgs("metadata");
@@ -75,13 +75,13 @@ public class ViewController implements Controller {
 			}else {
 				show("No active connection");
 			}
-		}else if (cmdId == VIEW_SUBMENU_3_ACTION_ID) {
+		}else if (cmdId == LOAD_SHAPEFILE) {
 			if (checkConnection()) {			
 				ShapefileLoad.getInstance().initialise();
 			}else {
 				show("No active connection");
 			}
-		}else if (cmdId == VIEW_SUBMENU_4_ACTION_ID) {
+		}else if (cmdId == ABOUT_GEORAPTOR) {
 			AboutDialog.getInstance().setVisible(true);
 		}
 		return true;

@@ -15,26 +15,16 @@ import oracle.ide.controller.IdeAction;
 public class TableContextMenuController implements Controller{
 	
 	
-	/**
-	 * CONTEXT_SUBMENU_1_ACTION_ID Zoom to Map
-	 * CONTEXT_SUBMENU_2_ACTION_ID Add to Map
-	 * CONTEXT_SUBMENU_3_ACTION_ID Create Spatial Index
-	 * CONTEXT_SUBMENU_4_ACTION_ID Drop Spatial Index
-	 * CONTEXT_SUBMENU_5_ACTION_ID Manage Metadata
-	 * CONTEXT_SUBMENU_6_ACTION_ID Drop Metadata
-	 * CONTEXT_SUBMENU_7_ACTION_ID Export
-	 * CONTEXT_SUBMENU_8_ACTION_ID Validate geometry
-	 */
-	
-	private static final int CONTEXT_SUBMENU_1_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_SUBMENU_1_ACTION_ID");
-	private static final int CONTEXT_SUBMENU_2_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_SUBMENU_2_ACTION_ID");
-	private static final int CONTEXT_SUBMENU_3_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_SUBMENU_3_ACTION_ID");
-	private static final int CONTEXT_SUBMENU_4_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_SUBMENU_4_ACTION_ID");
-	private static final int CONTEXT_SUBMENU_5_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_SUBMENU_5_ACTION_ID");
-	private static final int CONTEXT_SUBMENU_6_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_SUBMENU_6_ACTION_ID");
-	private static final int CONTEXT_SUBMENU_7_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_SUBMENU_7_ACTION_ID");
-	private static final int CONTEXT_SUBMENU_8_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_SUBMENU_8_ACTION_ID");
-	private static final int CONTEXT_TABLESUBMENU_ACTION_ID = Ide.findOrCreateCmdID("CONTEXT_TABLESUBMENU_ACTION_ID");
+
+	private static final int ZOOM_TO_MAP = Ide.findOrCreateCmdID("ZOOM_TO_MAP");
+	private static final int ADD_TO_MAP = Ide.findOrCreateCmdID("ADD_TO_MAP");
+	private static final int CREATE_SPATIAL_INDEX = Ide.findOrCreateCmdID("CREATE_SPATIAL_INDEX");
+	private static final int DROP_SPATIAL_INDEX = Ide.findOrCreateCmdID("DROP_SPATIAL_INDEX");
+	private static final int MANAGE_METADATA = Ide.findOrCreateCmdID("MANAGE_METADATA");
+	private static final int DROP_METADATA = Ide.findOrCreateCmdID("DROP_METADATA");
+	private static final int EXPORT = Ide.findOrCreateCmdID("EXPORT");
+	private static final int VALIDATE_GEOMETRY = Ide.findOrCreateCmdID("VALIDATE_GEOMETRY");
+	private static final int IMPORT_SHAPEFILE = Ide.findOrCreateCmdID("IMPORT_SHAPEFILE");
 
 	private void show (String message) {
 		JOptionPane.showMessageDialog(null, message, Resources.getString("DIALOG_SHOW_TITLE"), JOptionPane.INFORMATION_MESSAGE);
@@ -43,23 +33,23 @@ public class TableContextMenuController implements Controller{
 	public boolean handleEvent(IdeAction action, Context context) {
 		int cmdId = action.getCommandId();
 		
-		if (cmdId == CONTEXT_SUBMENU_1_ACTION_ID) {
+		if (cmdId == ZOOM_TO_MAP) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
-		}else if(cmdId == CONTEXT_SUBMENU_2_ACTION_ID){
+		}else if(cmdId == ADD_TO_MAP){
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
-		}else if (cmdId == CONTEXT_SUBMENU_3_ACTION_ID) {
+		}else if (cmdId == CREATE_SPATIAL_INDEX) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
-		}else if (cmdId == CONTEXT_SUBMENU_4_ACTION_ID) {
+		}else if (cmdId == DROP_SPATIAL_INDEX) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
-		}else if (cmdId == CONTEXT_SUBMENU_5_ACTION_ID) {
+		}else if (cmdId == MANAGE_METADATA) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
-		}else if (cmdId == CONTEXT_SUBMENU_6_ACTION_ID) {
+		}else if (cmdId == DROP_METADATA) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
-		}else if (cmdId == CONTEXT_SUBMENU_7_ACTION_ID) {
+		}else if (cmdId == EXPORT) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
-		}else if (cmdId == CONTEXT_SUBMENU_8_ACTION_ID) {
+		}else if (cmdId == VALIDATE_GEOMETRY) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
-		}else if (cmdId == CONTEXT_TABLESUBMENU_ACTION_ID) {
+		}else if (cmdId == IMPORT_SHAPEFILE) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
 		}
 		return true;
