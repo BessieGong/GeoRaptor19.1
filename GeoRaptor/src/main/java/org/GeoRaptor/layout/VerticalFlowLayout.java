@@ -7,6 +7,12 @@ import java.awt.FlowLayout;
 import java.awt.Insets;
 import java.io.Serializable;
 
+/**
+ * 
+ * @author Bessie Gong 
+ * @version 10 Oct 2019
+ *Temporary Layout file for preference
+ */
 public class VerticalFlowLayout extends FlowLayout implements Serializable {
 	public static final int TOP = 0;
 	public static final int MIDDLE = 1;

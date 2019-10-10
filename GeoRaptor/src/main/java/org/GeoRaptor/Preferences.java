@@ -16,7 +16,8 @@ import oracle.jdbc.OracleTypes;
  * 
  * @author Bessie Gong 
  * @version 24 Jul 2019
- *
+ *	
+ *	The entity of preference
  */
 public class Preferences extends HashStructureAdapter {
 

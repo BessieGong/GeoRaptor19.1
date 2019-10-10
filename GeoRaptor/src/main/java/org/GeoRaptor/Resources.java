@@ -11,6 +11,7 @@ import oracle.dbtools.raptor.utils.MessagesBase;
  * @author Bessie Gong 
  * @version 24 Jul 2019
  *
+ * Link to the resources.properties file in src/main/resource/org/GeoRaptor/
  */
 public class Resources extends MessagesBase {
 	

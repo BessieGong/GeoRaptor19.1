@@ -10,7 +10,7 @@ import oracle.dbtools.raptor.utils.MessagesBase;
  * 
  * @author Bessie Gong 
  * @version 24 Jul 2019
- *
+ *	Alternate resource file, delete has no effect on the project
  */
 public class ViewResources extends MessagesBase {
 	

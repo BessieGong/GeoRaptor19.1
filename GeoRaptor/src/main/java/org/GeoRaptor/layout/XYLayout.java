@@ -9,6 +9,12 @@ import java.awt.Rectangle;
 import java.io.Serializable;
 import java.util.Hashtable;
 
+/**
+ * Temporary Layout file for preference
+ * @author Bessie Gong 
+ * @version 10 Oct 2019
+ *
+ */
 public class XYLayout implements LayoutManager2, Serializable {
 	private static final long serialVersionUID = 200L;
 	int width;

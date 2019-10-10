@@ -56,6 +56,7 @@ import oracle.ide.panels.TraversalException;
  * 
  * @author Bessie Gong 
  * @version 24 Jul 2019
+ * The panel of preference
  *
  */
 public class PreferencePanel extends DefaultTraversablePanel {

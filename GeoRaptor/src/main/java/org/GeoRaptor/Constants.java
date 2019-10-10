@@ -12,6 +12,12 @@ import org.GeoRaptor.tools.Tools;
 
 import org.geotools.data.shapefile.shp.ShapeType;
 
+/**
+ * Comment out all content related to the Spatial view
+ * @author Bessie Gong 
+ * @version 10 Oct 2019
+ *
+ */
 public class Constants {
 
 	public static boolean DEBUG = false;

@@ -50,6 +50,7 @@ import oracle.jdbc.OracleConnection;
 /**
  *
  * @author Simon
+ * 
  */
 public class SRIDPanel extends javax.swing.JDialog implements Observer {
 

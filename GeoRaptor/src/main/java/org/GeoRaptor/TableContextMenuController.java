@@ -3,6 +3,7 @@ package org.GeoRaptor;
 import javax.swing.JOptionPane;
 
 import org.GeoRaptor.OracleSpatial.CreateSpatialIndex.ManageSpatialIndex;
+import org.GeoRaptor.OracleSpatial.ValidateSDOGeometry.ValidateSDOGeometryEmpty;
 import org.GeoRaptor.io.Import.ShapefileLoadEmpty;
 
 import oracle.ide.Context;
@@ -14,6 +15,7 @@ import oracle.ide.controller.IdeAction;
  * @author Bessie Gong Email: sadbessie@gmail.com
  * @version 11 Sep 2019
  *
+ *	User Object Hooks controller
  */
 public class TableContextMenuController implements Controller{
 	
@@ -51,6 +53,8 @@ public class TableContextMenuController implements Controller{
 		}else if (cmdId == EXPORT) {
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
 		}else if (cmdId == VALIDATE_GEOMETRY) {
+//			ValidateSDOGeometryEmpty vs = new ValidateSDOGeometryEmpty();
+//			vs.setVisible(true);
 			show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
 		}else if (cmdId == IMPORT_SHAPEFILE) {
 			ShapefileLoadEmpty.getInstance().initialise();

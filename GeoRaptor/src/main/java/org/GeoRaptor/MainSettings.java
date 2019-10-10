@@ -26,7 +26,11 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-/**
+/** 
+ * @author BessieGong 
+ * Comment out all content related to the Spatial view
+ * Use Resources class to replace propertiesFile
+ * 
  * Class for control all other settings classes.
  */
 public class MainSettings {

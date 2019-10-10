@@ -21,6 +21,7 @@ import oracle.javatools.db.DBException;
  * @author Bessie Gong 
  * @version 24 Jul 2019
  *
+ * Blank file, used to react to preferences
  */
 public class PreferenceController implements Controller {
 

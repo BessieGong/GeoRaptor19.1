@@ -21,7 +21,7 @@ import oracle.ide.controller.IdeAction;
  * 
  * @author Bessie Gong 
  * @version 24 Jul 2019
- *
+ *	Menu Hook controller
  */
 public class ViewController implements Controller {
 	
@@ -64,15 +64,16 @@ public class ViewController implements Controller {
 	
 		if (cmdId == OPEN_MAP) {
 			if (checkConnection()) {			
-				show("GeoRaptor1");
+				show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
 			}else {
 				show("No active connection");
 			}
 		}else if(cmdId == MANAGE_ALL_METADATA){
 			if (checkConnection()) {
-				MenuAction menuAction = new MenuAction();
-				menuAction.setArgs("metadata");
-				menuAction.launch();
+//				MenuAction menuAction = new MenuAction();
+//				menuAction.setArgs("metadata");
+//				menuAction.launch();
+				show("Action CmdID: " + cmdId + " Name: " + action.getValue("Name"));
 			}else {
 				show("No active connection");
 			}

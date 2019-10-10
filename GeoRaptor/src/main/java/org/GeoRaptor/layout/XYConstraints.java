@@ -2,6 +2,12 @@ package org.GeoRaptor.layout;
 
 import java.io.Serializable;
 
+/**
+ * Temporary Layout file for preference
+ * @author Bessie Gong 
+ * @version 10 Oct 2019
+ *
+ */
 public class XYConstraints implements Cloneable, Serializable {
 	int x;
 	int y;
